@@ -6,7 +6,8 @@ body{
 
 h1{
     color: blueviolet;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 700;
 }
 
 p{
@@ -36,3 +37,7 @@ img:hover{
     filter: none;
 }
 
+a{
+    color: blueviolet;
+text-decoration: none;
+}
