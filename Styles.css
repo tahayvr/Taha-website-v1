@@ -27,8 +27,12 @@ p{
     width: 100%;
     }
 img{
+    filter: grayscale(100%) brightness(120%);
     width: 200px;
     height: 200px;
     border-radius: 50%;
+}
+img:hover{
+    filter: none;
 }
 
