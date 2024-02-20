@@ -14,10 +14,10 @@ p {
   color: black;
   font-family: "Roboto", sans-serif;
 }
-.box-flex {
+.profile-box-flex {
   margin: 50px auto;
   padding: 20px 50px;
-  width: 70%;
+  width: 500px;
   display: flex;
   align-items: center;
   border-style: solid;
@@ -26,12 +26,13 @@ p {
   border-color: black;
 }
 .info-box {
+  padding: 10px 20px;
   width: 100%;
 }
 img {
   filter: grayscale(100%) brightness(120%);
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 img:hover {
