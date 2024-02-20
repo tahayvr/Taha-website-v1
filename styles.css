@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
 
 body {
-  background-color: white;
+  background-color: #121212;
 }
 
 h1 {
-  color: blueviolet;
+  color: #39ff14;
   font-family: "Roboto";
   font-weight: 700;
 }
 
 p {
-  color: black;
+  color: #ffffffdf;
   font-family: "Roboto", sans-serif;
 }
 .profile-box-flex {
@@ -19,11 +19,14 @@ p {
   padding: 20px 50px;
   width: 500px;
   display: flex;
+  flex-direction: row;
+  /*flex-wrap: wrap;*/
+  justify-content: center;
   align-items: center;
-  border-style: solid;
+  /* border-style: solid;
   border-radius: 10px;
   border-width: 1px;
-  border-color: black;
+  border-color: gray; */
 }
 .info-box {
   padding: 10px 20px;
@@ -40,6 +43,6 @@ img:hover {
 }
 
 a {
-  color: blueviolet;
+  color: #1dbb00;
   text-decoration: none;
 }
