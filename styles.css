@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+
 :root {
   /* main accent color */
   --color1: #39ff14;
@@ -25,8 +26,8 @@ p {
   font-family: "Fira Code", monospace;
   font-weight: 400;
   font-size: 1em;
-  /* font-family: "Roboto", sans-serif; */
 }
+
 .main-section {
   justify-content: center;
   align-items: center;
@@ -34,6 +35,7 @@ p {
   width: 100%;
   height: 100vh;
 }
+
 .profile-box-flex {
   margin: auto;
   padding: 20px 30px;
@@ -41,30 +43,36 @@ p {
   height: fit-content;
   display: flex;
   flex-direction: column;
-
-  /*flex-wrap: wrap;*/
   justify-content: center;
   align-items: center;
-  /* border: 1px solid var(--color4);
-  border-radius: 10px; */
+  border: 1px solid var(--color4);
+  border-radius: 10px;
 }
+
 .info-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* column-gap: 0px; */
   padding: 10px 10px;
   width: 100%;
+  /* Back color for testing */
+  /* background-color: #ffffff2d; */
 }
+
 #nameTaha {
   margin-bottom: 10px;
 }
+
 #descTaha {
   margin-top: 10px;
 }
 
+/* .pic {
+  /* For testing the box for the pic */
+/* background-color: #940b0b2d;
+} */
+
 #profilepic {
-  margin-top: 10px;
   filter: grayscale(100%) brightness(120%);
   width: 100px;
   height: 100px;
@@ -89,17 +97,15 @@ a {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .profile-box-flex {
-    /* width: 400px; */
+    width: 600px;
     flex-direction: row;
   }
   .info-box {
     float: left;
     align-items: start;
+    width: fit-content;
     padding: 10px 0px 10px 30px;
   }
-  /* .profile-box-flex {
-    width: 400px;
-  } */
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
