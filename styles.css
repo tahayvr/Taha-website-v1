@@ -45,8 +45,9 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--color4);
-  border-radius: 10px;
+  /* For testing and design use the bprder below */
+  /* border: 1px solid var(--color4);
+  border-radius: 10px; */
 }
 
 .info-box {
@@ -67,15 +68,17 @@ p {
   margin-top: 10px;
 }
 
-/* .pic {
+.pic {
   /* For testing the box for the pic */
-/* background-color: #940b0b2d;
-} */
+  width: 100px;
+  display: block;
+  /* background-color: #940b0b2d; */
+}
 
 #profilepic {
   filter: grayscale(100%) brightness(120%);
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: auto;
   border-radius: 50%;
 }
 #profilepic:hover {
@@ -104,7 +107,15 @@ a {
     float: left;
     align-items: start;
     width: fit-content;
-    padding: 10px 0px 10px 30px;
+    /* padding: 0; */
+    margin: 10px 0px 10px 30px;
+  }
+  #nameTaha {
+    margin: 0px;
+  }
+
+  #descTaha {
+    margin: 0px;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
