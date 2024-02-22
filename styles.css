@@ -69,20 +69,51 @@ p {
 }
 
 .pic {
-  /* For testing the box for the pic */
   width: 100px;
+  height: 100px;
   display: block;
-  /* background-color: #940b0b2d; */
+  /* For testing the box for the pic */
+  /* background-color: #ff0000; */
+}
+@keyframes bounce-up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  15%,
+  55% {
+    transform: translateY(-10px); /* Move up */
+  }
+  30%,
+  70% {
+    transform: translateY(0); /* Move back down */
+  }
+  60% {
+    transform: translateY(-5px); /* Second, smaller bounce up */
+  }
+  85% {
+    transform: translateY(0); /* Return to start position */
+  }
+}
+
+@keyframes colorize-pic {
+  from {
+    filter: grayscale(100%) brightness(120%);
+  }
+  to {
+    filter: none;
+  }
 }
 
 #profilepic {
   filter: grayscale(100%) brightness(120%);
   width: 100%;
   height: auto;
+  object-fit: cover;
   border-radius: 50%;
 }
 #profilepic:hover {
-  filter: none;
+  animation: bounce-up 1.5s ease-in-out, colorize-pic 0.5s ease-in-out forwards;
 }
 
 a {
@@ -102,13 +133,16 @@ a {
   .profile-box-flex {
     width: 600px;
     flex-direction: row;
+    align-items: stretch;
   }
   .info-box {
     float: left;
     align-items: start;
     width: fit-content;
-    /* padding: 0; */
-    margin: 10px 0px 10px 30px;
+    /* flex-grow: 1; */
+    justify-content: space-between;
+    padding: 0;
+    margin: 0px 0px 0px 30px;
   }
   #nameTaha {
     margin: 0px;
@@ -116,6 +150,9 @@ a {
 
   #descTaha {
     margin: 0px;
+  }
+  .pic {
+    flex-shrink: 0;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
