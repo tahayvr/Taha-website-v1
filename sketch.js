@@ -29,8 +29,8 @@ function setup() {
   centerX = windowWidth / 2;
   centerY = windowHeight / 2;
   let profileBox = document.getElementById("profile-box");
-  circleRadius = profileBox.clientWidth / 2;
-
+  circleRadius = profileBox.offsetWidth / 2;
+  console.log(circleRadius);
   // create particles
   for (let i = 0; i < 1000; i++) {
     particles[i] = new Particle();
