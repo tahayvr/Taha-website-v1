@@ -8,11 +8,13 @@ I'm working on this website as a sandbox for Front-End Development.
 
 A simple HTML + CSS page with basic info.
 
+![](screenshots/tahanejad-com-v1.0-screenshot.png)
+
 ## V1.5 Spring 2024 :white_check_mark:
 
 Added a generative flow field (p5.js sketch) as the background of the webpage.
 
-![](tahanejad-com-v1.5-screenshot.png)
+![](screenshots/tahanejad-com-v1.5-screenshot.png)
 
 ## V2.0 Coming Soon (Summer 2024)
 
