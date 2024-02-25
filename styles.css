@@ -15,6 +15,19 @@ body {
   background-color: var(--color3);
 }
 
+#settings {
+  display: none;
+  position: absolute;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  bottom: 0;
+  left: 0;
+}
+#settings:hover {
+  opacity: 1;
+}
+
 h1 {
   color: var(--color1);
   font-family: "Roboto";
@@ -38,10 +51,12 @@ p {
 }
 
 .profile-box-flex {
-  margin: auto;
+  margin: 0px;
   padding: 20px 30px;
   width: 400px;
+  box-sizing: border-box;
   height: fit-content;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -154,6 +169,9 @@ a {
   }
   .pic {
     flex-shrink: 0;
+  }
+  #settings {
+    display: block;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */

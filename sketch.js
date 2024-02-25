@@ -25,7 +25,7 @@ function setup() {
   rows = floor(windowHeight / scl);
   flowfield = new Array(cols * rows);
 
-  // Define the circle's center and radius based on the profile box.
+  // circle's center and radius based on the profile box.
   centerX = windowWidth / 2;
   centerY = windowHeight / 2;
   let profileBox = document.getElementById("profile-box");
@@ -139,7 +139,7 @@ function windowResized() {
   cols = floor(windowWidth / scl);
   rows = floor(windowHeight / scl);
   flowfield = new Array(cols * rows);
-
+  // create particles again
   for (let i = 0; i < 1000; i++) {
     particles[i] = new Particle();
   }
