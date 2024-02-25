@@ -15,17 +15,32 @@ body {
   background-color: var(--color3);
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center center;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center center;
+  }
+}
+
 #settings {
-  display: none;
+  display: flex;
   position: absolute;
   opacity: 0.8;
   margin-bottom: 10px;
   margin-left: 10px;
   bottom: 0;
   left: 0;
+  cursor: pointer;
+  animation: spin 2.5s infinite linear;
+  animation-play-state: paused;
 }
 #settings:hover {
   opacity: 1;
+  animation-play-state: running;
 }
 
 h1 {
@@ -170,9 +185,9 @@ a {
   .pic {
     flex-shrink: 0;
   }
-  #settings {
-    display: block;
-  }
+  /* #settings {
+    display: flex;
+  } */
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
