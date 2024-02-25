@@ -9,4 +9,6 @@ settingsDiv.addEventListener("click", function () {
   } else {
     profileBoxDiv.style.display = "none";
   }
+  setup();
+  draw();
 });
