@@ -62,7 +62,7 @@ function setup() {
 }
 
 function draw() {
-  let yoff = 0;
+  let yoff = 0; //
   for (let y = 0; y < rows; y++) {
     let xoff = 0;
     for (let x = 0; x < cols; x++) {

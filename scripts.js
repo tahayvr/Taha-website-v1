@@ -54,9 +54,26 @@ document.getElementById("settings").onclick = function () {
     menu.style.display = "block";
     icon.style.display = "none";
     profileBoxDiv.style.display = "none";
+    setup();
+    draw();
   } else {
     menu.style.display = "none";
     icon.style.display = "flex";
     profileBoxDiv.style.display = "flex";
+  }
+};
+
+//Event handler for Pause button click event.
+var isPaused = false;
+
+document.getElementById("pauseButton").onclick = function () {
+  if (isPaused) {
+    isPaused = false;
+    this.textContent = "pause"; // Change the text of the button to pause.
+    loop(); // Start the loop again.
+  } else {
+    isPaused = true;
+    this.textContent = "run"; // Change the text of the button to run.
+    noLoop(); // Stop the loop.
   }
 };
