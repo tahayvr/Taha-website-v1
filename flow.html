@@ -10,7 +10,107 @@
     <title>Flow Field</title>
   </head>
   <body>
+    <div id="settings">
+      <img
+        src="Assets/setting-icon.png"
+        alt="press for settings menu"
+        width="30px"
+        height="30px"
+      />
+    </div>
+    <div id="settingsMenu">
+      <div class="sliderContainer">
+        <p class="label">angle zoom: <output id="value1"></output></p>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="10"
+          class="slider"
+          id="slider1"
+        />
+        <p class="label">noise speed: <output id="value2"></output></p>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="18"
+          class="slider"
+          id="slider2"
+        />
+        <p class="label">particle speed: <output id="value3"></output></p>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="40"
+          class="slider"
+          id="slider3"
+        />
+        <p class="label">base hue: <output id="value4"></output></p>
+        <input
+          type="range"
+          min="0"
+          max="360"
+          value="120"
+          class="slider"
+          id="slider4"
+        />
+        <p class="label">hue range: <output id="value5"></output></p>
+        <input
+          type="range"
+          min="0"
+          max="360"
+          value="180"
+          class="slider"
+          id="slider5"
+        />
+        <p class="label">clear alpha: <output id="value6"></output></p>
+        <input
+          type="range"
+          min="0"
+          max="0.1"
+          value="0"
+          step="0.001"
+          class="slider"
+          id="slider6"
+        />
+        <p class="label">field force: <output id="value7"></output></p>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="10"
+          class="slider"
+          id="slider7"
+        />
+        <p class="label">particle opacity: <output id="value8"></output></p>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="100"
+          class="slider"
+          id="slider8"
+        />
+        <p class="label">particle saturation: <output id="value9"></output></p>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="100"
+          class="slider"
+          id="slider9"
+        />
+      </div>
+      <div class="buttonContainer">
+        <div class="button" id="pauseButton">pause</div>
+        <div class="button" id="resetButton">reset</div>
+        <div class="button" id="closeButton">esc</div>
+      </div>
+    </div>
     <canvas id="canvas"></canvas>
     <script src="flow.js"></script>
+    <script src="buttons.js"></script>
   </body>
 </html>

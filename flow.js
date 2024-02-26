@@ -16,8 +16,8 @@ class Particle {
     }
     this.vel.addTo(this.acc);
     this.pos.addTo(this.vel);
-    if (this.vel.getLength() > config.particleSpeed / 50) {
-      this.vel.setLength(config.particleSpeed / 50);
+    if (this.vel.getLength() > particleSpeed / 50) {
+      this.vel.setLength(particleSpeed / 50);
     }
     this.acc.x = 0;
     this.acc.y = 0;
@@ -63,6 +63,110 @@ let settings;
 let colorSettings;
 let requestId;
 
+// user controlled variables
+var slider2 = document.getElementById("slider2");
+var output2 = document.getElementById("value2");
+let noiseSpeed = slider2.value;
+output2.innerHTML = noiseSpeed;
+console.log("NoiseSpeed" + ":  " + noiseSpeed);
+slider2.oninput = function () {
+  noiseSpeed = this.value;
+  output2.innerHTML = noiseSpeed;
+  console.log("New NoiseSpeed" + ":  " + noiseSpeed);
+};
+
+var slider1 = document.getElementById("slider1");
+var output1 = document.getElementById("value1");
+let angleZoom = slider1.value;
+output1.innerHTML = angleZoom;
+console.log("AngleZoom" + ":  " + angleZoom);
+slider1.oninput = function () {
+  angleZoom = this.value;
+  output1.innerHTML = angleZoom;
+  console.log("New AngleZoom" + ":  " + angleZoom);
+};
+
+let lineMode = true; // UI option will be added later - CHECKBOX
+
+var slider3 = document.getElementById("slider3");
+var output3 = document.getElementById("value3");
+let particleSpeed = slider3.value;
+output3.innerHTML = particleSpeed;
+console.log("ParticleSpeed" + ":  " + particleSpeed);
+slider3.oninput = function () {
+  particleSpeed = this.value;
+  output3.innerHTML = particleSpeed;
+  console.log("New ParticleSpeed" + ":  " + particleSpeed);
+};
+
+var slider9 = document.getElementById("slider9");
+var output9 = document.getElementById("value9");
+let colorSaturation = slider9.value;
+output9.innerHTML = colorSaturation;
+console.log("ColorSaturation" + ":  " + colorSaturation);
+slider9.oninput = function () {
+  colorSaturation = this.value;
+  output9.innerHTML = colorSaturation;
+  console.log("New ColorSaturation" + ":  " + colorSaturation);
+};
+
+var slider4 = document.getElementById("slider4");
+var output4 = document.getElementById("value4");
+let baseHue = slider4.value;
+output4.innerHTML = baseHue;
+console.log("BaseHue" + ":  " + baseHue);
+slider9.style.background = `linear-gradient(90deg, hsla(${baseHue}, 100%, 50%, 0), hsla(${baseHue}, 100%, 50%, 1)`;
+slider4.oninput = function () {
+  baseHue = this.value;
+  output4.innerHTML = baseHue;
+  console.log("New BaseHue" + ":  " + baseHue);
+  slider9.style.background = `linear-gradient(90deg, hsla(${baseHue}, 100%, 50%, 0), hsla(${baseHue}, 100%, 50%, 1)`;
+};
+
+var slider5 = document.getElementById("slider5");
+var output5 = document.getElementById("value5");
+let hueRange = slider5.value;
+output5.innerHTML = hueRange;
+console.log("HueRange" + ":  " + hueRange);
+slider5.oninput = function () {
+  hueRange = this.value;
+  output5.innerHTML = hueRange;
+  console.log("New HueRange" + ":  " + hueRange);
+};
+
+var slider6 = document.getElementById("slider6");
+var output6 = document.getElementById("value6");
+let clearAlpha = slider6.value;
+output6.innerHTML = clearAlpha;
+console.log("ClearAlpha" + ":  " + clearAlpha);
+slider6.oninput = function () {
+  clearAlpha = this.value;
+  output6.innerHTML = clearAlpha;
+  console.log("New ClearAlpha" + ":  " + clearAlpha);
+};
+
+var slider7 = document.getElementById("slider7");
+var output7 = document.getElementById("value7");
+let fieldForce = slider7.value;
+output7.innerHTML = fieldForce;
+console.log("FieldForce" + ":  " + fieldForce);
+slider7.oninput = function () {
+  fieldForce = this.value;
+  output7.innerHTML = fieldForce;
+  console.log("New FieldForce" + ":  " + fieldForce);
+};
+
+var slider8 = document.getElementById("slider8");
+var output8 = document.getElementById("value8");
+let particleOpacity = slider8.value;
+output8.innerHTML = particleOpacity;
+console.log("ParticleOpacity" + ":  " + particleOpacity);
+slider8.oninput = function () {
+  particleOpacity = this.value;
+  output8.innerHTML = particleOpacity;
+  console.log("New ParticleOpacity" + ":  " + particleOpacity);
+};
+
 function setup() {
   size = 5;
   noiseZ = 0;
@@ -70,105 +174,6 @@ function setup() {
   ctx = canvas.getContext("2d");
   reset();
   window.addEventListener("resize", reset);
-  config = {
-    lineMode: true,
-    angleZoom: 9,
-    noiseSpeed: 18,
-    particleSpeed: 80,
-    fieldForce: 10,
-    clearAlpha: 0,
-  };
-  settings = QuickSettings.create();
-  settings.addBoolean(
-    "Line Mode",
-    config.lineMode,
-    (val) => (config.lineMode = val)
-  );
-  settings.addRange(
-    "Angle Zoom",
-    1,
-    100,
-    config.angleZoom,
-    1,
-    (val) => (config.angleZoom = val)
-  );
-  settings.addRange(
-    "Noise Speed",
-    1,
-    100,
-    config.noiseSpeed,
-    1,
-    (val) => (config.noiseSpeed = val)
-  );
-  settings.addRange(
-    "Particle Speed",
-    1,
-    100,
-    config.particleSpeed,
-    1,
-    (val) => (config.particleSpeed = val)
-  );
-  settings.addRange(
-    "Field Force",
-    1,
-    100,
-    config.fieldForce,
-    1,
-    (val) => (config.fieldForce = val)
-  );
-  settings.addRange(
-    "Clear Alpha",
-    0,
-    0.1,
-    config.clearAlpha,
-    0.001,
-    (val) => (config.clearAlpha = val)
-  );
-  settings.addButton("Clear Canvas", () => drawBackground(1));
-  settings.addButton("Reset", reset);
-  settings.addButton("Pause", pause);
-  settings.addButton("Resume", resume);
-  settings.hideControl("Resume");
-
-  colorConfig = {
-    particleOpacity: 100,
-    baseHue: 120,
-    hueRange: 180,
-    colorSaturation: 100,
-  };
-  colorSettings = QuickSettings.create(w - 200, 0, "Color");
-  colorSettings.addRange(
-    "Particle Opacity",
-    1,
-    100,
-    colorConfig.particleOpacity,
-    1,
-    (val) => (colorConfig.particleOpacity = val)
-  );
-  colorSettings.addRange(
-    "Base Hue",
-    0,
-    360,
-    colorConfig.baseHue,
-    1,
-    (val) => (colorConfig.baseHue = val)
-  );
-  colorSettings.addRange(
-    "Hue Range",
-    0,
-    360,
-    colorConfig.hueRange,
-    1,
-    (val) => (colorConfig.hueRange = val)
-  );
-  colorSettings.addRange(
-    "Color Saturation",
-    0,
-    100,
-    colorConfig.colorSaturation,
-    1,
-    (val) => (colorConfig.colorSaturation = val)
-  );
 }
 
 function reset() {
@@ -198,7 +203,7 @@ function draw() {
   drawBackground();
   requestId = requestAnimationFrame(draw);
   calculateField();
-  noiseZ += config.noiseSpeed / 10000;
+  noiseZ += noiseSpeed / 10000; // user controlled
   drawParticles();
 }
 
@@ -216,16 +221,11 @@ function calculateField() {
   for (let x = 0; x < columns; x++) {
     for (let y = 0; y < rows; y++) {
       let angle =
-        noise.simplex3(
-          x / config.angleZoom / 5,
-          y / config.angleZoom / 5,
-          noiseZ
-        ) *
+        noise.simplex3(x / angleZoom / 5, y / angleZoom / 5, noiseZ) *
         Math.PI *
         2;
       let length =
-        (noise.simplex3(x / 50 + 40000, y / 50 + 40000, noiseZ) *
-          config.fieldForce) /
+        (noise.simplex3(x / 50 + 40000, y / 50 + 40000, noiseZ) * fieldForce) /
         20;
       field[x][y].setLength(length);
       field[x][y].setAngle(angle);
@@ -234,22 +234,22 @@ function calculateField() {
 }
 
 function drawBackground(alpha) {
-  ctx.fillStyle = `rgba(0, 0, 0, ${alpha || config.clearAlpha})`;
+  ctx.fillStyle = `rgba(0, 0, 0, ${alpha || clearAlpha})`;
   ctx.fillRect(0, 0, w, h);
 }
 
 function drawParticles() {
   let pos = new Vector(0, 0);
-  let hue = Math.sin(noiseZ) * colorConfig.hueRange + colorConfig.baseHue;
-  let color = `hsla(${hue}, ${colorConfig.colorSaturation}%, 50%, ${
-    colorConfig.particleOpacity / 500
+  let hue = Math.sin(noiseZ) * hueRange + baseHue;
+  let color = `hsla(${hue}, ${colorSaturation}%, 50%, ${
+    particleOpacity / 500
   })`;
   ctx.fillStyle = color;
   ctx.strokeStyle = color;
   //ctx.shadowColor = color;
 
   particles.forEach((p) => {
-    if (config.lineMode) {
+    if (lineMode) {
       p.drawLine();
     } else {
       p.draw();

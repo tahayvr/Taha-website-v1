@@ -15,8 +15,9 @@ let zoff = 0; // z offset for the noise function
 
 let particles = []; // array to store the particles
 let flowfield; // flow field array
-let particleCount = 1000; // number of particles - controlled by the user
-let maxS = 0.7; // Maximum speed of particles - controlled by the user
+
+let particleCount = 1000;
+
 let particleAlpha = 70;
 
 let centerX; // center of the circle
@@ -95,7 +96,9 @@ function Particle() {
   this.pos = createVector(random(windowWidth), random(windowHeight));
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-  this.maxspeed = maxS; // Maximum speed of the particles - controlled by the user
+
+  this.maxspeed = 0.8;
+
   this.color = [random(255), random(255), random(255)]; // New color property for the particles
 
   this.prevPos = this.pos.copy();
@@ -163,7 +166,7 @@ function windowResized() {
   rows = floor(windowHeight / scl);
   flowfield = new Array(cols * rows);
   // create particles again
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < particleCount; i++) {
     particles[i] = new Particle();
   }
 }
