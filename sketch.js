@@ -1,19 +1,36 @@
+/*
+ * This file contains the code for the particle system that is displayed on the index page.
+ * The particle system is based on the flow field algorithm and is used to create a visual effect.
+ * If you are annoyed by the amount of comments in this file, Keep in mind that I'm still learning this shit
+ * and the comments help me in the process.
+ * You can remove them by running the following command in the terminal:
+ * sed -i '' '/^\/\//d' sketch.js
+ * This command will remove all comments from the file.
+ */
+
 let inc = 0.1;
-let scl = 10;
+let scl = 10; // scale for the flow field (controls the number of columns and rows) - controlled by the user
 let cols, rows;
-let zoff = 0;
+let zoff = 0; // z offset for the noise function
 
-let particles = [];
-let flowfield;
+let particles = []; // array to store the particles
+let flowfield; // flow field array
+let particleCount = 1000; // number of particles - controlled by the user
+let maxS = 0.7; // Maximum speed of particles - controlled by the user
+let particleAlpha = 70;
 
-let centerX;
+let centerX; // center of the circle
 let centerY;
 
-let circleRadius;
+let circleRadius; // radius of the circle - based on the profile box
 
-let cnv;
+let cnv; // canvas
 
+/**
+ * Initializes the canvas, sets up the flow field, creates particles, and sets the background color.
+ */
 function setup() {
+  // Create canvas
   cnv = createCanvas(windowWidth, windowHeight);
   cnv.position(0, 0);
   cnv.style("z-index", "-1");
@@ -21,21 +38,27 @@ function setup() {
   cnv.style("bottom", "0");
   cnv.style("overflow", "hidden");
 
+  // Calculate number of columns and rows
   cols = floor(windowWidth / scl);
   rows = floor(windowHeight / scl);
+
+  // Create flow field
   flowfield = new Array(cols * rows);
 
-  // circle's center and radius based on the profile box.
+  // Calculate circle's center and radius based on the profile box
   centerX = windowWidth / 2;
   centerY = windowHeight / 2;
   let profileBox = document.getElementById("profile-box");
   circleRadius = profileBox.offsetWidth / 2;
   console.log(circleRadius);
-  // create particles
-  for (let i = 0; i < 1000; i++) {
+
+  // Create particles and set the number of particles with particleCount
+  for (let i = 0; i < particleCount; i++) {
     particles[i] = new Particle();
   }
-  background(0);
+
+  // Set background color
+  background(12, 12, 12);
 }
 
 function draw() {
@@ -69,11 +92,11 @@ function draw() {
 }
 
 function Particle() {
-  this.pos = createVector(random(width), random(height));
+  this.pos = createVector(random(windowWidth), random(windowHeight));
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-  this.maxspeed = 1;
-  this.color = [random(255), random(255), random(255)]; // New color property
+  this.maxspeed = maxS; // Maximum speed of the particles - controlled by the user
+  this.color = [random(255), random(255), random(255)]; // New color property for the particles
 
   this.prevPos = this.pos.copy();
 
@@ -97,7 +120,7 @@ function Particle() {
   };
 
   this.show = function () {
-    stroke(this.color[0], this.color[1], this.color[2], 50);
+    stroke(this.color[0], this.color[1], this.color[2], particleAlpha);
     strokeWeight(1);
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
     this.updatePrev();
@@ -109,20 +132,20 @@ function Particle() {
   };
 
   this.edges = function () {
-    if (this.pos.x > width) {
+    if (this.pos.x > windowWidth) {
       this.pos.x = 0;
       this.updatePrev();
     }
     if (this.pos.x < 0) {
-      this.pos.x = width;
+      this.pos.x = windowWidth;
       this.updatePrev();
     }
-    if (this.pos.y > height) {
+    if (this.pos.y > windowHeight) {
       this.pos.y = 0;
       this.updatePrev();
     }
     if (this.pos.y < 0) {
-      this.pos.y = height;
+      this.pos.y = windowHeight;
       this.updatePrev();
     }
   };
